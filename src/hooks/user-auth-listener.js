@@ -12,11 +12,11 @@ export default function useAuthListener() {
         localStorage.setItem('authUser', JSON.stringify(authUser));
         setUser(authUser);
       } else {
+        // we dont have an authenticated user
         localStorage.removeItem('authUser');
         setUser(null);
       }
     });
-
     return () => listener();
   }, [firebase]);
   return { user };

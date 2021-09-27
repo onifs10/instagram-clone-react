@@ -21,7 +21,6 @@ export default function SignUp() {
     event.preventDefault();
     // eslint-disable-next-line no-empty
     const usernameExist = await doesUsernameExist(username);
-    console.log('usernameExist', usernameExist);
     if (!usernameExist) {
       try {
         const createdUserResult = await firebase

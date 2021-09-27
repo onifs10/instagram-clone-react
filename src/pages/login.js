@@ -6,12 +6,9 @@ import * as ROUTES from '../constants/routes';
 export default function Login() {
   const history = useHistory();
   const { firebase } = useContext(FirebaseContext);
-
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
   const [error, setError] = useState('');
-
   const isInvalid = password === '' || email === '';
 
   const handleLogin = async (event) => {
@@ -48,6 +45,7 @@ export default function Login() {
               type="text"
               placeholder="Email address"
               className="text-sm text-gray-base w-full mr-3 py-5 px-4 h-8 border border-gray-primary rounded mb-2"
+              value={email}
               onChange={({ target }) => setEmail(target.value)}
             />
             <input
@@ -55,6 +53,7 @@ export default function Login() {
               type="password"
               placeholder="Password"
               className="text-sm text-gray-base w-full mr-3 py-5 px-4 h-8 border border-gray-primary rounded mb-2"
+              value={password}
               onChange={({ target }) => setPassword(target.value)}
             />
             <button
