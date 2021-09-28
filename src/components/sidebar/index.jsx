@@ -2,14 +2,19 @@ import useUser from '../../hooks/use-user';
 import User from '../user';
 import Suggestion from '../suggestion';
 
-export default function Sidebar() {
+const SideBar = () => {
   const {
-    user: { fullName, username, userId, emailAddress: email }
+    user: { fullName, username, userId, emailAddress: email, following, docId }
   } = useUser();
+
   return (
     <div className="p-4">
       <User userName={username} fullName={fullName} email={email} />
-      <Suggestion userId={userId} />
+      <Suggestion userId={userId} following={following} loggedInUsersdocId={docId} />
     </div>
   );
-}
+};
+
+SideBar.whyDidYouRender = true;
+
+export default SideBar;

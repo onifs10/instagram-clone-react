@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import Gravatar from 'react-gravatar';
+import Avatar from 'react-avatar';
 import UserContext from '../context/user';
 import FirebaseContext from '../context/firebase';
 import * as ROUTES from '../constants/routes';
@@ -66,12 +66,7 @@ export default function Header() {
                 </button>
                 <div className="flex items-center cursor-pointer">
                   <Link to={`/p/${user.displayName}`}>
-                    <Gravatar
-                      email={user.email}
-                      rating="g"
-                      default={user.displayName}
-                      className="rounded-full flex h-8 w-8"
-                    />
+                    <Avatar email={user.email} name={user.displayName} round size={30} />
                   </Link>
                 </div>
               </>

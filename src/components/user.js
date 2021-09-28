@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Skeleton from 'react-loading-skeleton';
 import React from 'react';
-import Gravatar from 'react-gravatar';
+import Avatar from 'react-avatar';
 
 const User = ({ userName, fullName, email }) =>
   !userName || !fullName ? (
@@ -11,12 +11,7 @@ const User = ({ userName, fullName, email }) =>
   ) : (
     <Link to={`/p/${userName}`} className="grid grid-cols-4 gap-4 mb-6 items-center">
       <div className="flex items-center justify-between col-span-1">
-        <Gravatar
-          email={email}
-          rating="g"
-          default={userName}
-          className="rounded-full flex h-16 w-16  mr-3"
-        />
+        <Avatar email={email} name={fullName} round size={50} className="mr-3" />
       </div>
       <div className="col-span-3">
         <p className="font-bold text-sm">{userName}</p>
