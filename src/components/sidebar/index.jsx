@@ -15,6 +15,4 @@ const SideBar = () => {
   );
 };
 
-SideBar.whyDidYouRender = true;
-
 export default SideBar;

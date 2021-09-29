@@ -66,3 +66,33 @@ export async function updateUserFollowers(profileDocId, userId, isFollowing = tr
       followers: isFollowing ? FieldValue.arrayRemove(userId) : FieldValue.arrayUnion(userId)
     });
 }
+
+export async function getPhotos(userId, following) {
+  try {
+    const photos = await firebase
+      .firestore()
+      .collection('photos')
+      .where('userId', 'in', [...following, userId])
+      .get();
+
+    const userTimelinePhotos = photos.docs.map((photo) => ({
+      ...photo.data(),
+      docId: photo.id
+    }));
+
+    const photosWithUserDetails = await Promise.all(
+      userTimelinePhotos.map(async (photo) => {
+        let userLikePhoto = false;
+        if (photo.likes.includes(userId)) {
+          userLikePhoto = true;
+        }
+        const user = await getUserByUserId(photo.userId);
+        const [{ username, emailAddress }] = user;
+        return { ...photo, emailAddress, username, userLikePhoto };
+      })
+    );
+    return photosWithUserDetails;
+  } catch (e) {
+    console.error(e);
+  }
+}
