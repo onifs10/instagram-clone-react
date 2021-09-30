@@ -7,6 +7,7 @@ import './styles/app.css';
 
 import ProtectedRoute from './helpers/protected-route';
 import IsUserLoggedIn from './helpers/is-user-logged-in';
+import PageLoader from './components/Loader';
 
 const Login = lazy(() => import('./pages/login'));
 const SignUp = lazy(() => import('./pages/signup'));
@@ -19,7 +20,7 @@ export default function App() {
   return (
     <UserContext.Provider value={{ user }}>
       <Router>
-        <Suspense fallback={<p> loading ... </p>}>
+        <Suspense fallback={<PageLoader />}>
           <Switch>
             <IsUserLoggedIn user={user} loggedInPath={ROUTES.DASHBOARD} path={ROUTES.LOGIN} exact>
               <Login />
