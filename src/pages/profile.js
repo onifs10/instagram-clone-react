@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import Header from '../components/header';
 
-export default function NotFound() {
+export default function Profile() {
   useEffect(() => {
-    document.title = 'Not Found - Instagram';
+    document.title = 'Profile - Instagram';
     return () => {
       document.title = 'Instagram';
     };
@@ -12,7 +12,7 @@ export default function NotFound() {
     <div className="bg-gray-background">
       <Header />
       <div className="mx-auto max-w-screen-lg">
-        <p className="text-center text-2xl">Not Found</p>
+        <p className="text-center text-2xl">Profile</p>
       </div>
     </div>
   );

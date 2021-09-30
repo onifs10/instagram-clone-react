@@ -11,7 +11,7 @@ export default function Post({
   likes,
   imageSrc,
   caption,
-  userLikedPhoto,
+  userLikePhoto,
   docId,
   comments,
   username,
@@ -26,7 +26,7 @@ export default function Post({
       <Image src={imageSrc} caption={caption} />
       <Actions
         docId={docId}
-        likedPhoto={userLikedPhoto}
+        likedPhoto={userLikePhoto}
         totalLikes={likes.length}
         handleFocus={handleFocus}
       />
@@ -46,7 +46,7 @@ Post.propTypes = {
   imageSrc: PropTypes.string.isRequired,
   username: PropTypes.string.isRequired,
   caption: PropTypes.string.isRequired,
-  userLikedPhoto: PropTypes.bool.isRequired,
+  userLikePhoto: PropTypes.bool.isRequired,
   docId: PropTypes.string.isRequired,
   comments: PropTypes.array.isRequired,
   dateCreated: PropTypes.string.isRequired,
