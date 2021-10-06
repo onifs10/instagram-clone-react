@@ -10,6 +10,35 @@ export async function doesUsernameExist(username) {
   return result.docs.length > 0;
 }
 
+export async function getPhotosByUserId(userId) {
+  try {
+    const photos = await firebase
+      .firestore()
+      .collection('photos')
+      .where('userId', '==', userId)
+      .get();
+    return photos.docs.map((photo) => ({
+      ...photo.data(),
+      docId: photo.id
+    }));
+  } catch (e) {
+    console.log(e);
+    return [];
+  }
+}
+
+export async function getUserByUsername(username) {
+  const result = await firebase
+    .firestore()
+    .collection('users')
+    .where('username', '==', username)
+    .get();
+  return result.docs.map((item) => ({
+    ...item.data(),
+    docId: item.id
+  }));
+}
+
 export async function getUserByUserId(userId) {
   // console.log(userId);
   const result = await firebase.firestore().collection('users').where('userId', '==', userId).get();

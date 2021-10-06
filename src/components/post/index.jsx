@@ -49,6 +49,6 @@ Post.propTypes = {
   userLikePhoto: PropTypes.bool.isRequired,
   docId: PropTypes.string.isRequired,
   comments: PropTypes.array.isRequired,
-  dateCreated: PropTypes.string.isRequired,
+  dateCreated: PropTypes.number.isRequired,
   emailAddress: PropTypes.string.isRequired
 };
